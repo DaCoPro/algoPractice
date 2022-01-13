@@ -33,7 +33,9 @@ addOne(-5) //=> -4
 -----------------------------------------------------------------*/
 // Your solution for 01-addOne here:
 
-
+function addOne (inputNum) {
+  return inputNum + 1;
+}
 
 /*-----------------------------------------------------------------
 Challenge: 02-addTwoNumbers
@@ -54,7 +56,20 @@ addTwoNumbers('Hello', 5) //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 02-addTwoNumbers here:
 
+function addTwoNumbers (firstVal, secondVal) {
+  let nonNumArgDetected = false;
+  //TK IMPROVEMENT
+  // work with the arguments obj incoming
 
+  if (typeof firstVal !== 'number' || typeof secondVal !== 'number') {
+    nonNumArgDetected = true;
+  }
+  if (nonNumArgDetected) {
+    return NaN;
+  } else {
+    return firstVal + secondVal;
+  }
+}
 
 /*-----------------------------------------------------------------
 Challenge: 03-sumNumbers
@@ -794,4 +809,4 @@ totalTaskTime( [5, 2, 6, 8, 7, 2], 3 ) // => 12
 
 
 //exports list
-module.exports = {sayHello};
+module.exports = {sayHello, addOne, addTwoNumbers};
