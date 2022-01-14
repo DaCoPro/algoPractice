@@ -91,7 +91,15 @@ sumNumbers([]) //=> 0
 // Your solution for 03-sumNumbers here:
 
 
-
+function sumNumbers (inputArr) {
+  let total = 0;
+  if (Object.keys(inputArr).length > 0) {
+    inputArr.forEach(function (num) {
+      total += num;
+    })
+  }
+  return total;
+}
 
 
 
@@ -102,7 +110,8 @@ Difficulty: Basic
 
 Prompt:
 
-- Write a function called addList that accepts any quantity of numbers as arguments, adds them together and returns the resulting sum.
+- Write a function called addList that accepts any quantity of numbers as arguments, 
+- adds them together and returns the resulting sum.
 - Assume all parameters will be numbers.
 - If called with no arguments, return 0 (zero).
 
@@ -114,7 +123,14 @@ add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
 
+function addList () {
+  let total = 0;
+  for (let i =0; i<arguments.length ; i++) {
+    total += arguments[i]
+  }
 
+  return total;
+}
 
 
 /*-----------------------------------------------------------------
@@ -124,7 +140,8 @@ Difficulty: Basic
 
 Prompt:
 
-- Write a function named computeRemainder that accepts two numeric arguments and returns the remainder of the division of those two numbers.
+- Write a function named computeRemainder that accepts two numeric arguments and returns the 
+- remainder of the division of those two numbers.
 - The first argument should be the dividend and the second argument should be the divisor.
 - If a 0 is passed in as the second argument you should return JavaScript's special numeric value: Infinity.
 - For extra fun, complete this challenge without using the modulus (%) operator.
@@ -137,7 +154,15 @@ computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
 
-
+function computeRemainder (dividend, divisor) {
+  let remainder;
+  if (divisor === 0) {
+    remainder = Infinity;
+  }  else {
+    remainder = dividend % divisor;
+  }
+  return remainder;
+}
 
 /*-----------------------------------------------------------------
 Challenge: 06-range
@@ -146,8 +171,10 @@ Difficulty: basic
 
 Prompt:
 
-- Write a function called range that accepts two integers as arguments and returns an array of integers starting with the first argument up to one less than the second argument.
-- The range function must be called with the first argument less than or equal to the second argument, otherwise return the string "First argument must be less than second".
+- Write a function called range that accepts two integers as arguments 
+- and returns an array of integers starting with the first argument up to one less than the second argument.
+- The range function must be called with the first argument less than or equal to the second argument, 
+- otherwise return the string "First argument must be less than second".
 
 Examples:
 
@@ -159,7 +186,9 @@ range(5,2) //=> "First argument must be less than second"
 // Your solution for 06-range here:
 
 
-
+function range (min, max) {
+  
+}
 
 
 /*-----------------------------------------------------------------
@@ -809,4 +838,4 @@ totalTaskTime( [5, 2, 6, 8, 7, 2], 3 ) // => 12
 
 
 //exports list
-module.exports = {sayHello, addOne, addTwoNumbers};
+module.exports = {sayHello, addOne, addTwoNumbers, sumNumbers, addList, computeRemainder, range };
