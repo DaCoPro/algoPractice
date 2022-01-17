@@ -334,8 +334,27 @@ formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
 
-function formatWithPadding (displayInt, padString, padLengthInt) {
+function formatWithPadding (displayInt, padChar, returnStringLengthInt) {
+  const charArr = [];
+  let paddedString = '';
+
+  //add unpaded contents to arr
+  const displayIntArr = displayInt.toString().split('')
+  displayIntArr.forEach(function (char) {
+    charArr.push(char);
+  })
+
+  //add padding to desired string length
+  while (charArr.length < returnStringLengthInt) {
+    charArr.unshift(padChar);
+  }
+
+  //convert the char arr collection into a string
+  charArr.forEach(function (char) {
+    paddedString += char;
+  })
   
+  return paddedString;
 }
 
 /*-----------------------------------------------------------------

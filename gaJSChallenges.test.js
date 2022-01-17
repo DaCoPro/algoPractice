@@ -97,3 +97,10 @@ test('charCount: lower, upper, and special chars case', () => {
 test('formatWithPadding: base case', () => {
   expect(gaJSChallenges.formatWithPadding(123, '0', 5)).toBe("00123")
 })
+test('formatWithPadding: special char', () => {
+  expect(gaJSChallenges.formatWithPadding(42, '*', 10)).toBe("********42")
+})
+test('formatWithPadding: no padding', () => {
+  expect(gaJSChallenges.formatWithPadding(1234, '*', 3)).toBe("1234")
+})
+
