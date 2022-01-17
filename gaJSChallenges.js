@@ -285,7 +285,29 @@ charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i:
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
 
-function charCount() {}
+function charCount(inString) {
+  const inStringArr = inString.split('');
+  let charArr = [];
+
+  //construct keys arr of all present chars
+  inStringArr.forEach(function (char) {
+    if (!charArr.includes(char)) {
+      charArr.push(char)
+    } 
+  })
+  let charCountObj = {};
+  charArr.forEach(function (charKey) {
+    let charCount = 0;
+    inStringArr.forEach(function (char) {
+      if (char === charKey) {
+        charCount += 1;
+      }
+    })
+    charCountObj[charKey] = charCount;
+  })
+
+  return charCountObj;
+}
 
 /*-----------------------------------------------------------------
 Challenge: 10-formatWithPadding
@@ -311,6 +333,10 @@ formatWithPadding(42, '*', 10); //=> "********42"
 formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
+
+function formatWithPadding (displayInt, padString, padLengthInt) {
+  
+}
 
 /*-----------------------------------------------------------------
 Challenge: 11-isPalindrome
@@ -813,4 +839,5 @@ module.exports = {
   reverseUpcaseString,
   removeEnds,
   charCount,
+  formatWithPadding
 };

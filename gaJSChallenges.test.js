@@ -1,3 +1,4 @@
+const { TestWatcher } = require("jest");
 const gaJSChallenges = require("./gaJSChallenges.js");
 
 //say hello
@@ -82,3 +83,17 @@ test("removeEnds: base case", () => {
 test("removeEnds: < 3 chars, returns empty string", () => {
   expect(gaJSChallenges.removeEnds("a")).toBe("");
 });
+
+
+//charCount
+test('charCount: lower case only', () => {
+  expect(gaJSChallenges.charCount('hello')).toStrictEqual({h: 1, e: 1, l: 2, o: 1 })
+})
+test('charCount: lower, upper, and special chars case', () => {
+  expect(gaJSChallenges.charCount('Today is fantastic!')).toStrictEqual({T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1  })
+})
+
+//formatWithPadding
+test('formatWithPadding: base case', () => {
+  expect(gaJSChallenges.formatWithPadding(123, '0', 5)).toBe("00123")
+})
