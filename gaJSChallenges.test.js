@@ -104,3 +104,15 @@ test('formatWithPadding: no padding', () => {
   expect(gaJSChallenges.formatWithPadding(1234, '*', 3)).toBe("1234")
 })
 
+test('isPalindrome: catches a false', () => {
+  expect(gaJSChallenges.isPalindrome('SEI Rocks')).toBe(false);
+})
+test('isPalindrome: returns true for 0 length strings', () => {
+  expect(gaJSChallenges.isPalindrome('')).toBe(true);
+})
+test('isPalindrome: detects a true word', () => {
+  expect(gaJSChallenges.isPalindrome('rotor')).toBe(true);
+})
+test('isPalindrome: detects a true sentence', () => {
+  expect(gaJSChallenges.isPalindrome('A nut for a jar of tuna')).toBe(true);
+})

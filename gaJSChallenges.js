@@ -378,6 +378,36 @@ isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
 
+function isPalindrome (inputString) {
+  if (inputString.split('').length < 2) {
+    return true;
+  } else {
+    //lowercase the string
+    const lowerCaseArr = inputString.toLowerCase().split('');
+    //remove spacing
+    const finalLowerCaseArr = lowerCaseArr.filter(char => char !== ' ');
+   
+    //value of lowerCaseArr is being mutated at next line and it's feeding into this 
+    //variable as well
+    //preserve the lowerCaseArr in separate 'branch'
+    const finalLowerCaseBranch = lowerCaseArr.filter(char => char !== (' '));
+
+
+    const lowerCaseReversedArr = finalLowerCaseArr.reverse();
+   
+    
+    for (let i = 0; i < finalLowerCaseBranch.length; i++) {
+      if (finalLowerCaseBranch[i] !== lowerCaseReversedArr[i]) {
+      
+        return false;
+      }
+    }
+
+
+    return true;
+  }
+}
+
 /*-----------------------------------------------------------------
 Challenge: 12-hammingDistance
 
@@ -858,5 +888,6 @@ module.exports = {
   reverseUpcaseString,
   removeEnds,
   charCount,
-  formatWithPadding
+  formatWithPadding,
+  isPalindrome
 };
