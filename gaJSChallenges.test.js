@@ -84,35 +84,82 @@ test("removeEnds: < 3 chars, returns empty string", () => {
   expect(gaJSChallenges.removeEnds("a")).toBe("");
 });
 
-
 //charCount
-test('charCount: lower case only', () => {
-  expect(gaJSChallenges.charCount('hello')).toStrictEqual({h: 1, e: 1, l: 2, o: 1 })
-})
-test('charCount: lower, upper, and special chars case', () => {
-  expect(gaJSChallenges.charCount('Today is fantastic!')).toStrictEqual({T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1  })
-})
+test("charCount: lower case only", () => {
+  expect(gaJSChallenges.charCount("hello")).toStrictEqual({
+    h: 1,
+    e: 1,
+    l: 2,
+    o: 1,
+  });
+});
+test("charCount: lower, upper, and special chars case", () => {
+  expect(gaJSChallenges.charCount("Today is fantastic!")).toStrictEqual({
+    T: 1,
+    o: 1,
+    d: 1,
+    a: 3,
+    y: 1,
+    " ": 2,
+    i: 2,
+    s: 2,
+    f: 1,
+    n: 1,
+    t: 2,
+    c: 1,
+    "!": 1,
+  });
+});
 
 //formatWithPadding
-test('formatWithPadding: base case', () => {
-  expect(gaJSChallenges.formatWithPadding(123, '0', 5)).toBe("00123")
-})
-test('formatWithPadding: special char', () => {
-  expect(gaJSChallenges.formatWithPadding(42, '*', 10)).toBe("********42")
-})
-test('formatWithPadding: no padding', () => {
-  expect(gaJSChallenges.formatWithPadding(1234, '*', 3)).toBe("1234")
-})
+test("formatWithPadding: base case", () => {
+  expect(gaJSChallenges.formatWithPadding(123, "0", 5)).toBe("00123");
+});
+test("formatWithPadding: special char", () => {
+  expect(gaJSChallenges.formatWithPadding(42, "*", 10)).toBe("********42");
+});
+test("formatWithPadding: no padding", () => {
+  expect(gaJSChallenges.formatWithPadding(1234, "*", 3)).toBe("1234");
+});
 
-test('isPalindrome: catches a false', () => {
-  expect(gaJSChallenges.isPalindrome('SEI Rocks')).toBe(false);
-})
-test('isPalindrome: returns true for 0 length strings', () => {
-  expect(gaJSChallenges.isPalindrome('')).toBe(true);
-})
-test('isPalindrome: detects a true word', () => {
-  expect(gaJSChallenges.isPalindrome('rotor')).toBe(true);
-})
-test('isPalindrome: detects a true sentence', () => {
-  expect(gaJSChallenges.isPalindrome('A nut for a jar of tuna')).toBe(true);
-})
+//isPalindrome
+test("isPalindrome: catches a false", () => {
+  expect(gaJSChallenges.isPalindrome("SEI Rocks")).toBe(false);
+});
+test("isPalindrome: returns true for 0 length strings", () => {
+  expect(gaJSChallenges.isPalindrome("")).toBe(true);
+});
+test("isPalindrome: detects a true word", () => {
+  expect(gaJSChallenges.isPalindrome("rotor")).toBe(true);
+});
+test("isPalindrome: detects a true sentence", () => {
+  expect(gaJSChallenges.isPalindrome("A nut for a jar of tuna")).toBe(true);
+});
+
+//hammingDistance
+test("hammingDistance: finds similarities", () => {
+  expect(gaJSChallenges.hammingDistance("abc", "abc")).toBe(0);
+});
+test("hammingDistance: finds a difference in nums", () => {
+  expect(gaJSChallenges.hammingDistance("a1c", "a2c")).toBe(1);
+});
+test("hammingDistance: detects special char difs", () => {
+  expect(gaJSChallenges.hammingDistance("!!!!", "????")).toBe(4);
+});
+test("hammingDistance: dif lengths returns NaN", () => {
+  expect(gaJSChallenges.hammingDistance("ab", "abc")).toBe(NaN);
+});
+
+//mumble
+test("mumble: single char", () => {
+  expect(gaJSChallenges.mumble("x")).toBe("x");
+});
+test("mumble: multi letter", () => {
+  expect(gaJSChallenges.mumble("abc")).toBe("a-bb-ccc");
+});
+test("mumble: multi num", () => {
+  expect(gaJSChallenges.mumble("121")).toBe("1-22-111");
+});
+test("mumble: mixed letter num special with space", () => {
+  expect(gaJSChallenges.mumble("!A 2")).toBe("!-AA-   -2222");
+});

@@ -286,15 +286,15 @@ charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i:
 // Your solution for 09-charCount here:
 
 function charCount(inString) {
-  const inStringArr = inString.split('');
+  const inStringArr = inString.split("");
   let charArr = [];
 
   //construct keys arr of all present chars
   inStringArr.forEach(function (char) {
     if (!charArr.includes(char)) {
-      charArr.push(char)
-    } 
-  })
+      charArr.push(char);
+    }
+  });
   let charCountObj = {};
   charArr.forEach(function (charKey) {
     let charCount = 0;
@@ -302,9 +302,9 @@ function charCount(inString) {
       if (char === charKey) {
         charCount += 1;
       }
-    })
+    });
     charCountObj[charKey] = charCount;
-  })
+  });
 
   return charCountObj;
 }
@@ -334,15 +334,15 @@ formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
 
-function formatWithPadding (displayInt, padChar, returnStringLengthInt) {
+function formatWithPadding(displayInt, padChar, returnStringLengthInt) {
   const charArr = [];
-  let paddedString = '';
+  let paddedString = "";
 
   //add unpaded contents to arr
-  const displayIntArr = displayInt.toString().split('')
+  const displayIntArr = displayInt.toString().split("");
   displayIntArr.forEach(function (char) {
     charArr.push(char);
-  })
+  });
 
   //add padding to desired string length
   while (charArr.length < returnStringLengthInt) {
@@ -352,8 +352,8 @@ function formatWithPadding (displayInt, padChar, returnStringLengthInt) {
   //convert the char arr collection into a string
   charArr.forEach(function (char) {
     paddedString += char;
-  })
-  
+  });
+
   return paddedString;
 }
 
@@ -378,32 +378,26 @@ isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
 
-function isPalindrome (inputString) {
-  if (inputString.split('').length < 2) {
+function isPalindrome(inputString) {
+  if (inputString.split("").length < 2) {
     return true;
   } else {
     //lowercase the string
-    const lowerCaseArr = inputString.toLowerCase().split('');
+    const lowerCaseArr = inputString.toLowerCase().split("");
     //remove spacing
-    const finalLowerCaseArr = lowerCaseArr.filter(char => char !== ' ');
-   
-    //value of lowerCaseArr is being mutated at next line and it's feeding into this 
+    const finalLowerCaseArr = lowerCaseArr.filter((char) => char !== " ");
+
+    //value of lowerCaseArr is being mutated at next line and it's feeding into this
     //variable as well
     //preserve the lowerCaseArr in separate 'branch'
-    const finalLowerCaseBranch = lowerCaseArr.filter(char => char !== (' '));
-
-
+    const finalLowerCaseBranch = lowerCaseArr.filter((char) => char !== " ");
     const lowerCaseReversedArr = finalLowerCaseArr.reverse();
-   
-    
+
     for (let i = 0; i < finalLowerCaseBranch.length; i++) {
       if (finalLowerCaseBranch[i] !== lowerCaseReversedArr[i]) {
-      
         return false;
       }
     }
-
-
     return true;
   }
 }
@@ -415,10 +409,14 @@ Difficulty: Intermediate
 
 Prompt:
 
-In information theory, the hamming distance refers to the count of the differences between two strings of equal length.  It is used in computer science for such things as implementing "fuzzy search"  capability.
+In information theory, the hamming distance refers to the count of the differences between 
+two strings of equal length.  It is used in computer science for such things as 
+implementing "fuzzy search"  capability.
 
-- Write a function named hammingDistance that accepts two arguments which are both strings of equal length.
-- The function should return the count of the symbols (characters, numbers, etc.) at the same position within each string that are different.
+- Write a function named hammingDistance that accepts two arguments which are both strings
+-  of equal length.
+- The function should return the count of the symbols (characters, numbers, etc.) 
+- at the same position within each string that are different.
 - If the strings are not of the same length, the function should return NaN.
 
 Examples:
@@ -430,6 +428,22 @@ hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
 
+function hammingDistance(string1, string2) {
+  const string1Arr = string1.split("");
+  const string2Arr = string2.split("");
+  if (string1Arr.length !== string2Arr.length) {
+    return NaN;
+  } else {
+    let difCount = 0;
+    for (let i = 0; i < string1Arr.length; i++) {
+      if (string1Arr[i] !== string2Arr[i]) {
+        difCount += 1;
+      }
+    }
+    return difCount;
+  }
+}
+
 /*-----------------------------------------------------------------
 Challenge: 13-mumble
 
@@ -438,7 +452,9 @@ Difficulty: Intermediate
 Prompt:
 
 - Write a function called mumble that accepts a single string argument.
-- The function should return a string that has each character repeated the number of times according to its position within the string arg.  In addition, each repeated section of characters should be separated by a hyphen (-).
+- The function should return a string that has each character repeated the 
+- number of times according to its position within the string arg.  
+- In addition, each repeated section of characters should be separated by a hyphen (-).
 - Examples describe it best..
 
 Examples:
@@ -449,6 +465,26 @@ mumble('121'); //=> '1-22-111'
 mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
+
+function mumble(inString) {
+  const inStringArr = inString.split("");
+  const outStringArr = [];
+  //for each char in the inStringArr
+  for (let i = 0; i < inStringArr.length; i++) {
+    if (outStringArr.length > 0) {
+      outStringArr.push("-");
+    }
+    //do x times where x is the chars index value
+    for (let j = i + 1; j > 0; j--) {
+      outStringArr.push(inStringArr[i]);
+    }
+  }
+  let outString = "";
+  outStringArr.forEach(function (char) {
+    outString += char;
+  });
+  return outString;
+}
 
 /*-----------------------------------------------------------------
 Challenge: 14-fromPairs
@@ -889,5 +925,7 @@ module.exports = {
   removeEnds,
   charCount,
   formatWithPadding,
-  isPalindrome
+  isPalindrome,
+  hammingDistance,
+  mumble,
 };
