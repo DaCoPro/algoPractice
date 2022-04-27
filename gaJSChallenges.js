@@ -504,6 +504,14 @@ fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sal
 -----------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
 
+const fromPairs = (arr) => {
+  const obj = {};
+  arr.forEach((pair) => {
+    obj[pair[0]] = pair[1];
+  });
+  return obj;
+};
+
 /*-----------------------------------------------------------------
 Challenge: 15-mergeObjects
 
@@ -826,7 +834,7 @@ Hints:
 
 Examples:
 
-countTheBits( 0 ) // => 0
+countTheBits( 0 ) // => 0F
 countTheBits( 13 ) // => 3
 countTheBits( 256 ) // => 1
 countTheBits( 255 ) //=> 8
@@ -928,4 +936,5 @@ module.exports = {
   isPalindrome,
   hammingDistance,
   mumble,
+  fromPairs,
 };

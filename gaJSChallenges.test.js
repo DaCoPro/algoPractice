@@ -163,3 +163,16 @@ test("mumble: multi num", () => {
 test("mumble: mixed letter num special with space", () => {
   expect(gaJSChallenges.mumble("!A 2")).toBe("!-AA-   -2222");
 });
+
+//fromPairs
+test("fromPairs: base case", () => {
+  expect(
+    gaJSChallenges.fromPairs([
+      ["a", 1],
+      ["b", 2],
+    ])
+  ).toStrictEqual({
+    a: 1,
+    b: 2,
+  });
+});
